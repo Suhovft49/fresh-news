@@ -10,7 +10,8 @@
       "assets": [
         "assets",
         "favicon.ico",
-        "manifest.json"
+        "manifest.json",
+        "service-worker/worker-basic.js"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -21,6 +22,7 @@
       "prefix": "app",
       "serviceWorker": true,
       "styles": [
+        "../node_modules/normalize.css/normalize.css",
         "styles.css"
       ],
       "scripts": [
