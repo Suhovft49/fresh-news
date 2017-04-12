@@ -1,0 +1,20 @@
+<md-card class="news-item-card">
+    <md-card-header>
+        <div md-card-avatar class="example-header-image" 
+            [ngStyle]="{'background-size': 'cover','background-image': 'url('+article.urlToImage+')'}"></div>
+        <md-card-title>{{article.title}}</md-card-title>
+        <md-card-subtitle>{{article.author}}</md-card-subtitle>
+    </md-card-header>
+    <!--<div class="image-item" [ngStyle]="{'background-size': 'cover','padding-top': '100%', 'background-position': 'center', 'background-image': 'url('+article.urlToImage+')'}">
+    </div>-->
+    <img md-card-image [src]="article.urlToImage">
+    <md-card-content>
+        <p>
+        {{article.description}}
+        </p>
+    </md-card-content>
+    <md-card-actions>
+        <button md-button>LIKE</button>
+        <button md-button>SHARE</button>
+    </md-card-actions>
+</md-card>

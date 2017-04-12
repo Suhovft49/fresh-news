@@ -10,12 +10,14 @@ import 'hammerjs';
 import { AppComponent } from './app.component';
 import { FreshNewsHeader } from './components/header/header.component';
 import { FreshNewsContainer } from './components/news.container/news.container.component';
+import { NewsItemComponent } from './components/news-item/news-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FreshNewsHeader,
-    FreshNewsContainer
+    FreshNewsContainer,
+    NewsItemComponent
   ],
   imports: [
     BrowserModule,
