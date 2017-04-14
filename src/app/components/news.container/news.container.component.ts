@@ -11,9 +11,10 @@ import { article, sourceArticle } from '../../shared/interfaces/article';
 })
 
 export class FreshNewsContainer {
-    articles: article[]
+    channelArticles: article[]
     sources: sourceArticle[];
     sourcesSubscribe:any;
+    item:any;
     constructor(
         private NewsService: NewsService
     ) {
@@ -24,36 +25,42 @@ export class FreshNewsContainer {
 
     getSources() {
         this.NewsService.getSources()
-        .subscribe(sources => {
-            this.NewsService.changeSources(sources)
-        })
+            .subscribe(sources => {
+                this.NewsService.changeSources(sources)
+            })
     }
-
-    
 
     getArticlesBySource(source) {
         this.NewsService.getArticlesBySource()
-        .subscribe(articles => {
-           this.articles = articles;
-        });   
+            .subscribe(articles => {
+                this.channelArticles = articles;
+            });   
     }
 
-    generateArticlesByData(item) {
-        item.articles.forEach(element => {
-            element.name = item.name;
-            element.sourceUrl = item.url;
-            element.sourceLogosUrl = item.urlsToLogos;
-        });
-        debugger;
-        this.articles.push(item.articles);
-    }
+    // generateArticlesByData(item) {
+    //     item.articles.forEach(element => {
+    //         element.name = item.name;
+    //         element.sourceUrl = item.url;
+    //         element.sourceLogosUrl = item.urlsToLogos;
+    //     });
+    //     debugger;
+    //     this.articles.push(item.articles);
+    // }
 
     getAllArticlesBySourcesArr(sourcesArr) {
         this.NewsService.getAllArticlesBySourcesArr(sourcesArr)
         .subscribe(data => {
-             debugger;
-             let articlesArr = data.map(this.generateArticlesByData);
-             debugger;
+            let itteratedData = Array.from(data);
+            let articleArr = [];
+            for ( let item of itteratedData as any) {
+                item.articles.forEach(element => {
+                    element.name = item.name;
+                    element.sourceUrl = item.url;
+                    element.sourceLogosUrl = item.urlsToLogos;
+                    articleArr.push(element)
+                });
+            }
+            this.channelArticles = articleArr;
         })
     }
 
